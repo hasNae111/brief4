@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Ajouter Patient - DiabetoWeb{% endblock %}
+{% block content %}
+<h2>Ajouter un nouveau patient</h2>
+
+<form method="post" action="/submet">
+  <div class="mb-3">
+    <label for="name" class="form-label">Nom</label>
+    <input type="text" class="form-control" id="name" name="name" required />
+  </div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Âge</label>
+    <input type="number" class="form-control" id="age" name="age" required />
+  </div>
+  <div class="mb-3">
+    <label for="sex" class="form-label">Sexe</label>
+    <select class="form-select" id="sex" name="sex" required>
+      <option value="">Sélectionnez</option>
+      <option value="M">Masculin</option>
+      <option value="F">Féminin</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="glucose" class="form-label">Glucose</label>
+    <input type="number" step="any" class="form-control" id="glucose" name="glucose" required />
+  </div>
+  <div class="mb-3">
+    <label for="bmi" class="form-label">BMI</label>
+    <input type="number" step="any" class="form-control" id="bmi" name="bmi" required />
+  </div>
+  <div class="mb-3">
+    <label for="bloodpressure" class="form-label">Pression artérielle</label>
+    <input type="number" step="any" class="form-control" id="bloodpressure" name="bloodpressure" required />
+  </div>
+  <div class="mb-3">
+    <label for="pedigree" class="form-label">Pedigree</label>
+    <input type="number" step="any" class="form-control" id="pedigree" name="pedigree" required />
+  </div>
+
+  <button type="submit" class="btn btn-success">Ajouter Patient</button>
+</form>
+
+{% if prediction is defined %}
+  <div class="alert alert-info mt-3">
+    Résultat de la prédiction : <strong>{{ "Diabétique" if prediction == 1 else "Non diabétique" }}</strong>
+  </div>
+{% endif %}
+
+{% endblock %}
